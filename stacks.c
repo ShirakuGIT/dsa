@@ -40,3 +40,22 @@ int pop(Stackptr s) {
     free(temp);
     return data;
 }
+
+int top(Stackptr s) {
+    if (s->top->data == NULL) {
+        printf("Empty stack, nothing to see.\n");
+        return -1;
+    }
+    return s->top->data;
+
+}
+
+int size(Stackptr s) {
+    int counter = 0;
+    Nodeptr temp = s->top;
+    while (temp->next) {
+        counter++;
+        temp = temp->next;
+    }
+    return counter;
+}
