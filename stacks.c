@@ -59,3 +59,9 @@ int size(Stackptr s) {
     }
     return counter;
 }
+
+int isEmpty(Stackptr s) {
+    if (s->top == NULL) {
+        return -1;
+    }
+}
