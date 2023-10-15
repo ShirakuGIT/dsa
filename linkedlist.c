@@ -12,7 +12,6 @@ struct Node {
 
 Nodeptr create(Nodeptr head, int data) {
     Nodeptr newNode = (Nodeptr) malloc (sizeof(Node));
-
     newNode->data = data;
     newNode->next = NULL;
     return newNode;
@@ -20,23 +19,22 @@ Nodeptr create(Nodeptr head, int data) {
 
 Nodeptr insertAfter(Nodeptr head, int where, int data) {
     Nodeptr newNode = create(head, data);
-    if (head->data == where) {
-        Nodeptr temp1 = head;
-        Nodeptr temp2 = head->next;
-        temp1->next = newNode;
-        newNode->next = temp2;
+    Nodeptr temp = head;
+
+    if (!head) return newNode;
+
+    if (temp->data == where) {
+        newNode->next = temp->next;
+        temp->next = newNode;
         return head;
     }
-    Nodeptr temp = head;
     while (temp->next && temp->data != where) {
             printf("%d\n", temp->data);
             temp = temp->next;
 
     }
-    Nodeptr temp2 = temp->next;
+    newNode->next = temp->next;
     temp->next = newNode;
-    newNode->next = temp2;
-
     return head;
 }
 
@@ -44,7 +42,6 @@ Nodeptr insertEnd(Nodeptr head, int data) {
     Nodeptr newNode = create(head, data);
 
     if (!head) {
-        newNode->data = data;
         head = newNode;
         return newNode;
     }
