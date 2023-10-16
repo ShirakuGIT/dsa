@@ -13,3 +13,13 @@ void sort(int no, char *array[]) {
         }
     }
 }
+
+
+int main() {
+
+    char* names[] = {"Shivaram", "Alex", "Bob"};
+    sort(3, names);
+    for (int i = 0; i < 3; i++) {
+        printf("%s\n", names[i]);
+    }
+}
